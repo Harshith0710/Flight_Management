@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Head content -->
+</head>
+
+<body>
+    <div class="container">
+        <!-- Search results -->
+        <h2>Search Results</h2>
+        <table>
+            <!-- Table headers -->
+            <thead>
+                <tr>
+                    <th>Flight Number</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                    <th>Airline</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <!-- Table body -->
+            <tbody>
+                <!-- Flight data -->
+                <tr th:each="flight : ${flights}">
+                    <td th:text="${flight.flightNumber}"></td>
+                    <td th:text="${flight.departureTime}"></td>
+                    <td th:text="${flight.arrivalTime}"></td>
+                    <td th:text="${flight.airline}"></td>
+                    <td th:text="${flight.price}"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Pagination controls -->
+        <div class="pagination">
+            <!-- Pagination links -->
+            <ul>
+                <li th:class="${currentPage == 1 ? 'disabled' : ''}">
+                    <a th:href="@{${'/?page=' + (currentPage - 1)}}">Previous</a>
+                </li>
+                <li th:each="pageNum : ${#numbers.sequence(1, totalPages)}" th:class="${pageNum == currentPage ? 'active' : ''}">
+                    <a th:href="@{${'/?page=' + pageNum}}">[[${pageNum}]]</a>
+                </li>
+                <li th:class="${currentPage == totalPages ? 'disabled' : ''}">
+                    <a th:href="@{${'/?page=' + (currentPage + 1)}}">Next</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

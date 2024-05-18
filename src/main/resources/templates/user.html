@@ -1,0 +1,84 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        label {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            width: calc(50% - 5px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Flight Search</h1>
+        <form action="/search" method="get">
+            <label for="departureAirport">Departure Airport:</label>
+            <input type="text" id="departureAirport" name="departureAirport" placeholder="Enter departure airport"
+                required>
+
+            <label for="destinationAirport">Destination Airport:</label>
+            <input type="text" id="destinationAirport" name="destinationAirport" placeholder="Enter destination airport"
+                required>
+
+            <label for="departureDate">Departure Date:</label>
+            <input type="date" id="departureDate" name="departureDate" required>
+
+            <label for="returnDate">Return Date (optional):</label>
+            <input type="date" id="returnDate" name="returnDate">
+
+            <input type="submit" value="Search Flights">
+        </form>
+    </div>
+</body>
+
+</html>

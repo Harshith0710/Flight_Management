@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0e2433;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #45b6fe;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #0e2433;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #45b6fe;
+        }
+
+        /* Add more styles and components for your dashboard here */
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ADMIN Dashboard</h1>
+    </div>
+    <div class="container">
+    <h2>Welcome, [[${user.getFullname()}]]</h2>
+    
+    <!-- Form for adding or updating flight information -->
+    <form action="/admin/add-flight" method="post">
+        <label for="flightNumber">Flight Number:</label>
+        <input type="text" id="flightNumber" name="flightNumber" required><br>
+        
+        <label for="originAirport">Origin Airport:</label>
+        <input type="text" id="originAirport" name="originAirport" required><br>
+        
+        <label for="destinationAirport">Destination Airport:</label>
+        <input type="text" id="destinationAirport" name="destinationAirport" required><br>
+        
+        <label for="departureTime">Departure Time:</label>
+        <input type="datetime-local" id="departureTime" name="departureTime" required><br>
+        
+        <label for="arrivalTime">Arrival Time:</label>
+        <input type="datetime-local" id="arrivalTime" name="arrivalTime" required><br>
+        
+        <label for="airline">Airline:</label>
+        <input type="text" id="airline" name="airline" required><br>
+        
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required><br>
+        
+        <button type="submit">Add/Update Flight</button>
+    </form>
+    <!-- Button for deleting flights -->
+	<form action="/admin/delete-flight" method="post">
+	    <label for="flightId">Flight ID:</label>
+	    <input id="flightId" name="flightId" >  
+	    <button type="submit">Delete Flight</button>
+	</form>
+
+
+
+    
+    <!-- Logout link -->
+    <span sec:authorize="isAuthenticated">
+        <a th:href="@{/logout}">Logout</a>
+    </span>
+</div>
+
+</body>
+</html>
