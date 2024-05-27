@@ -37,7 +37,6 @@
             color: #45b6fe;
         }
 
-        /* Add more styles and components for your dashboard here */
     </style>
 </head>
 <body>
@@ -47,7 +46,6 @@
     <div class="container">
     <h2>Welcome, [[${user.getFullname()}]]</h2>
     
-    <!-- Form for adding or updating flight information -->
     <form action="/admin/add-flight" method="post">
         <label for="flightNumber">Flight Number:</label>
         <input type="text" id="flightNumber" name="flightNumber" required><br>
@@ -72,7 +70,6 @@
         
         <button type="submit">Add/Update Flight</button>
     </form>
-    <!-- Button for deleting flights -->
 	<form action="/admin/delete-flight" method="post">
 	    <label for="flightId">Flight ID:</label>
 	    <input id="flightId" name="flightId" >  
@@ -82,7 +79,6 @@
 
 
     
-    <!-- Logout link -->
     <span sec:authorize="isAuthenticated">
         <a th:href="@{/logout}">Logout</a>
     </span>
